@@ -7,43 +7,80 @@
     <title>Document</title>
 </head>
 <body>
+    
     <p> Open the console and get ready to play Rock, Paper, Scissors</p>
 
     <script>
         //Array for R P S choices
+
         const rps = ["rock", "paper", "scissors"];
+
+        //variables to hold scores
+
+        let playerScore = 0;
+        let computerScore = 0;
+
         //Choosing a random value from the Array    
+
         const computerSelection = rps[Math.floor(Math.random()*rps.length)]; 
-        //prompt for player choice
+
+        //prompt for player choice, forcing it into lowercase to allow for case insensitivity
+
         const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-        //function to play the round using CPU  vs Player
+
+        //function to play the round using CPU  vs Player variables
+
         function playRound(playerSelection, computerSelection) {
             if(playerSelection === computerSelection) {
                 return 'tie';
             } 
             else if(playerSelection == 'rock'){
                 if(computerSelection == 'paper'){
-                    return 'you lose';
+                    computerScore += 1;
+                    return 'Computer Wins';
                 }else{
-                    return 'A winner is you';
+                    playerScore += 1;
+                    return 'Player Wins';
                 }
             }
             else if(playerSelection == 'scissors'){
                 if (computerSelection == 'rock'){
-                    return "You lose";
+                    computerScore += 1;
+                    return "Computer Wins";
                 }else{
-                    return 'you win';
+                    playerScore += 1;
+                    return 'Player Wins';
                 }
             }
             else if(playerSelection == 'paper'){
                 if(computerSelection == 'scissors'){
-                    return 'You are a loser';
+                    computerScore += 1;
+                    return 'Computer Wins';
                 }else{
-                    return 'You WIN BB';
+                    playerScore += 1;
+                    return 'Player Wins';
                 }
             }
         }
+        //Print the outcome text 
+
         console.log(playRound(playerSelection, computerSelection));
+        
+        
+
+        //looping function to add up a score for each Player's win first to 5 wins
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                playRound();
+        }
+        if(score['playerScore'] > score['computerScore']) {
+    return 'You win';
+  } else {
+    return 'You lose';
+  }
+
+}
+
     </script>
 </body>
 </html>
